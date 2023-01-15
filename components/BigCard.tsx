@@ -3,7 +3,7 @@
 import { View, Text, Image } from "react-native";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-
+import { UserIcon } from "react-native-heroicons/outline";
 function BigCard({
   title,
   description,
@@ -59,22 +59,22 @@ function BigCard({
 
   return (
     <View>
-      <View className="card w-[380px] h-[460px] bg-base-100 shadow-xl rounded-sm">
+      <View className="card  p-6 bg-offwhite shadow-xl rounded-sm ">
         <Image
           source={require("../assets" + "/images/sumskiris.jpg" + "")}
           alt=""
-          className="h-20 w-36 object-cover"
+          className="h-28 w-full object-cover"
           // src={image}
           // alt=""
           // className="rounded-sm h-40 w-[350px] object-cover "
         />
-        <View className="card-body items-center text-center">
-          <Text className="card-title">{title}</Text>
+        <View className="items-center text-center">
+          <Text className="text-lg font-semibold">{title}</Text>
           <Text className="text-left">{description}</Text>
           {/* {!user && ( */}
-          <View className="self-end card-actions ">
+          {/* <View className="self-end card-actions ">
             {/* {li} */}
-            <svg
+          {/*  <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -91,30 +91,36 @@ function BigCard({
           </View>
           {/* )} */}
           {/* {user && ( onClick={() => like()}*/}
-          <View className="card-actions self-end ">
-            {li}
-            {!liked && (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-6 h-6"
-              >
-                <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
-              </svg>
-            )}
-            {liked && (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-6 h-6 text-red-500"
-              >
-                <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
-              </svg>
-            )}
+
+          <View className="self-end ">
+            <Text>
+              {li}
+              {/*  */}
+            </Text>
+            {/* <UserIcon size={24} color="#111111" /> */}
+            {/*  */}
+            {/* {!liked && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-6 h-6"
+            >
+              <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+            </svg>
+          )} */}
+            {/* {liked && ( */}
+            {/* <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-6 h-6 text-red-500"
+          >
+            <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+          </svg> */}
+            {/* )} */}
           </View>
-          {/* )} */}
+          {/* )}  */}
         </View>
       </View>
     </View>

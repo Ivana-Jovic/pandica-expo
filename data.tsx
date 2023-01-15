@@ -52,30 +52,30 @@ export const animals2: animalInfo[] = [
     description: des,
     comments: ["Ivana:Ovo je komentar 1", "Ana:Ovo je komentar 2"],
   },
-  {
-    name: "Orangutan",
-    image: "/images/orangutan.jpg",
-    description: des,
-    comments: ["Ivana:Ovo je komentar 1", "Ana:Ovo je komentar 2"],
-  },
-  {
-    name: "Zirafa",
-    image: "/images/zirafa.jpg",
-    description: des,
-    comments: ["Ivana:Ovo je komentar 1", "Ana:Ovo je komentar 2"],
-  },
-  {
-    name: "Gorila",
-    image: "/images/gorila.jpg",
-    description: des,
-    comments: ["Ivana:Ovo je komentar 1", "Ana:Ovo je komentar 2"],
-  },
-  {
-    name: "Nosorog",
-    image: "/images/nosorog.jpg",
-    description: des,
-    comments: [],
-  },
+  // {
+  //   name: "Orangutan",
+  //   image: "/images/orangutan.jpg",
+  //   description: des,
+  //   comments: ["Ivana:Ovo je komentar 1", "Ana:Ovo je komentar 2"],
+  // },
+  // {
+  //   name: "Zirafa",
+  //   image: "/images/zirafa.jpg",
+  //   description: des,
+  //   comments: ["Ivana:Ovo je komentar 1", "Ana:Ovo je komentar 2"],
+  // },
+  // {
+  //   name: "Gorila",
+  //   image: "/images/gorila.jpg",
+  //   description: des,
+  //   comments: ["Ivana:Ovo je komentar 1", "Ana:Ovo je komentar 2"],
+  // },
+  // {
+  //   name: "Nosorog",
+  //   image: "/images/nosorog.jpg",
+  //   description: des,
+  //   comments: [],
+  // },
 ];
 export interface eventInfo {
   title: string;
