@@ -18,6 +18,7 @@ function Navbar() {
         onPress={() => {
           navigation.navigate("Home");
         }}
+        className="pt-2"
       >
         <Image
           source={require("../assets/images/logo.png")}

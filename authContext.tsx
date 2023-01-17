@@ -11,7 +11,7 @@ type ContextType = {
   setUser: Dispatch<React.SetStateAction<userInfo | undefined>>;
   signout: () => void;
 
-  signin: (username: string, password: string) => boolean;
+  signin: (username: string, password: string) => Promise<boolean>;
 };
 type AuthProviderProps = {
   children?: React.ReactNode;
@@ -20,7 +20,7 @@ export const AuthContext = createContext<ContextType>({
   user: undefined,
   setUser: () => {},
   signout: () => {},
-  signin: () => false,
+  signin: async () => false,
 });
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
@@ -32,11 +32,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setUser(undefined);
   };
 
-  const signin = (username: string, password: string) => {
+  const signin = async (username: string, password: string) => {
     // const users: userInfo[] = JSON.parse(localStorage.getItem("users") + "");
-    const userString = getData("currUser");
-    const users: userInfo[] =
-      typeof userString === "string" ? JSON.parse(userString) : {};
+    // const userString = getData("users");
+    // const users: userInfo[] =
+    //   typeof userString === "string" ? JSON.parse(userString) : {};
+    const userString = getData("users");
+    const users: userInfo[] = JSON.parse(await userString);
     const currUser = users.find((user) => {
       return user.username === username && user.password === password;
     });
@@ -64,8 +66,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const userString = getData("currUser");
     if (typeof userString === "string") setUser(JSON.parse(userString));
 
-    storeData("aaaaa", JSON.stringify("AAAaBBB"));
-    storeData("aaaaan", JSON.stringify("AAAa"));
+    // storeData("aaaaa", JSON.stringify("AAAaBBB"));
+    // storeData("aaaaan", JSON.stringify("AAAa"));
   }, []);
 
   const u: ContextType = {

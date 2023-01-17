@@ -53,19 +53,17 @@ function Register({
   const onSubmit: SubmitHandler<IFormInput> = async (data: IFormInput) => {
     // if (!inPopup && data.oldPassword !== "") {
     //   if (data.newPassword === "") {
-    //     toast.error("Nova lozinka ne sme biti prazna");
-    // Toast.show({
-    //   type: "error",
-    //   text1: "Nova lozinka ne sme biti prazna",
-    // });
+    //     Toast.show({
+    //       type: "error",
+    //       text1: "Nova lozinka ne sme biti prazna",
+    //     });
     //     return;
     //   }
     //   if (data.oldPassword !== user?.password) {
-    //     toast.error("Ne poklapa se lozinka");
-    // Toast.show({
-    //   type: "error",
-    //   text1: "Ne poklapa se lozinka",
-    // });
+    //     Toast.show({
+    //       type: "error",
+    //       text1: "Ne poklapa se lozinka",
+    //     });
     //     return;
     //   }
     // }
@@ -130,7 +128,6 @@ function Register({
   };
 
   const cancel = () => {
-    // toast.error("Odustano od promene podtaka");
     // navigate("/");
     Toast.show({
       type: "error",
@@ -138,7 +135,7 @@ function Register({
     });
   };
   return (
-    <View className="flex flex-col mt-5">
+    <View className="flex flex-col mt-10">
       {/* <form onSubmit={handleSubmit(onSubmit)}> */}
       <View className="flex items-center space-y-4 ">
         <View className="flex flex-row items-center">
@@ -263,13 +260,13 @@ function Register({
           </View>
         )}
       </View>
-      <View className="flex flex-row gap-7 justify-center mt-7">
+      <View className="flex flex-row  justify-center mt-5">
         <TouchableOpacity
           // title="Submit"
           onPress={handleSubmit(onSubmit)}
-          className="my-5 p-3 w-48 bg-offwhite shadow-m rounded-md"
+          className="mt-5 p-3 w-48 bg-offwhite shadow-m rounded-md"
         >
-          <Text className="text-center">
+          <Text className="text-center uppercase font-semibold">
             {inPopup ? "Registruj se" : "Promeni"}
           </Text>
         </TouchableOpacity>
@@ -279,14 +276,16 @@ function Register({
             onPress={cancel}
             className="my-5 p-3  w-48 bg-offwhite shadow-md rounded-md"
           >
-            <Text className="text-center">Odustani</Text>
+            <Text className="text-center uppercase font-semibold">
+              Odustani
+            </Text>
           </TouchableOpacity>
         )}
       </View>
       {/* </form> */}
       <View>
         <View>
-          <Text className="text-center py-5">
+          <Text className="text-center  my-5">
             {(errors.firstName ||
               errors.lastName ||
               errors.telephone ||

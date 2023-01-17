@@ -8,6 +8,8 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../authContext";
 import Register from "../components/Register";
 import { TouchableOpacity } from "react-native";
+import { TextInput } from "react-native";
+import { useNavigation } from "@react-navigation/core";
 
 export default function Login() {
   const [username, setUsername] = useState<string>("");
@@ -15,7 +17,7 @@ export default function Login() {
   const [issignin, setssignin] = useState<boolean>(true);
 
   const { user, signin, signout } = useContext(AuthContext);
-
+  const navigation = useNavigation();
   const handleClose = () => {
     // setPopupOpen(false);
   };
@@ -24,58 +26,60 @@ export default function Login() {
     <SafeAreaView className=" bg-darkGreen grow">
       <Navbar />
       <ScrollView className=" bg-lightGreen ">
-        <Text>Login</Text>
-        {/* {!issignin && ( */}
-        <View className="">
-          <Register inPopup={true} action={() => handleClose()} />
-          <TouchableOpacity
-            className="cursor-pointer"
-            onPress={() => setssignin(!issignin)}
-          >
-            <Text className="text-center">Imate nalog? Prijavite se...</Text>
-          </TouchableOpacity>
-        </View>
-        {/* )} */}
-        {/* {issignin && (
-          <View className="grid grid-cols-2 items-center gap-5 mt-10 mr-10">
-            <label className="">Korisnicko ime</label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="textarea w-full rounded-sm "
-            />
-            <label className="">Lozinka</label>
-            <input
-              type="text"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="textarea w-full rounded-sm "
-            />
+        {!issignin && (
+          <View className="">
+            <Register inPopup={true} action={() => handleClose()} />
             <TouchableOpacity
-              onPress={() => {
-                if (signin(username, password)) {
-                  setPopupOpen(false);
-                  setUsername("");
-                  setPassword("");
-                  if (username === "admin" && password === "123")
-                    navigate("/WorkerHome");
-                  else navigate("/");
-                }
-              }}
-              className="col-span-2 justify-self-center
-                my-5 btn border-none w-48 bg-offwhite hover:bg-offwhite  shadow-md hover:shadow-lg text-black   rounded-md"
-            >
-              Prijavi se
-            </TouchableOpacity>{" "}
-            <TouchableOpacity
+              className="cursor-pointer"
               onPress={() => setssignin(!issignin)}
-              className="col-span-2 justify-self-center cursor-pointer"
             >
-              Nemate nalog? Registrujte se...
+              <Text className="text-center">Imate nalog? Prijavite se...</Text>
             </TouchableOpacity>
           </View>
-        )} */}
+        )}
+        {issignin && (
+          <View className="flex items-center space-y-4 mt-10">
+            <View className="flex flex-row items-center">
+              <Text className="w-32">Korisnicko ime</Text>
+              <TextInput
+                value={username}
+                onChangeText={setUsername}
+                className="bg-white w-32"
+              />
+            </View>
+            <View className="flex flex-row items-center mb-10">
+              <Text className="w-32">Lozinka</Text>
+              <TextInput
+                value={password}
+                onChangeText={setPassword}
+                className="bg-white w-32"
+              />
+            </View>
+            <TouchableOpacity
+              onPress={() => {
+                signin(username, password).then((res) => {
+                  if (res) {
+                    // setPopupOpen(false);
+                    setUsername("");
+                    setPassword("");
+                    navigation.navigate("Home");
+                  }
+                });
+              }}
+              className="p-3 w-48 bg-offwhite shadow-m rounded-md"
+            >
+              <Text className="text-center uppercase font-semibold">
+                Prijavi se
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => setssignin(!issignin)}
+              className=" "
+            >
+              <Text className="mt-7">Nemate nalog? Registrujte se...</Text>
+            </TouchableOpacity>
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
