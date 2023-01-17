@@ -63,6 +63,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     // const userString = localStorage.getItem("currUser");
     const userString = getData("currUser");
     if (typeof userString === "string") setUser(JSON.parse(userString));
+
+    storeData("aaaaa", JSON.stringify("AAAaBBB"));
+    storeData("aaaaan", JSON.stringify("AAAa"));
   }, []);
 
   const u: ContextType = {

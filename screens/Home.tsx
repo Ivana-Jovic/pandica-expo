@@ -1,10 +1,11 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
-import { animals2, events } from "../data";
+import { animals2, events, users } from "../data";
 import SmallCard from "../components/SmallCard";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BigCard from "../components/BigCard";
 import Navbar from "../components/Navbar";
+import { getData, storeData } from "../helperFunctions";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // const storeData = async (key, value) => {
@@ -26,16 +27,22 @@ import Navbar from "../components/Navbar";
 // };
 
 export default function Home() {
-  //   const [newPage, setNewPage] = useState<number>(1);
-  //   if (AsyncStorage..length === 0) {
-  //     localStorage.setItem("animals", JSON.stringify(animals2));
-  //     localStorage.setItem("events", JSON.stringify(events));
-  //     localStorage.setItem("users", JSON.stringify(users));
-  //     localStorage.setItem(
-  //       "notificationAdmin",
-  //       JSON.stringify(["a:notAdmin1", "a:notAdmin2"])
-  //     );
-  //   }
+  getData("users").then((item) => {
+    if (item) {
+      // do the damage
+    }
+    {
+      storeData("animals", JSON.stringify(animals2));
+      storeData("events", JSON.stringify(events));
+      storeData("users", JSON.stringify(users));
+      storeData("currUser", JSON.stringify([]));
+      // storeData(
+      //   "notificationAdmin",
+      //   JSON.stringify(["a:notAdmin1", "a:notAdmin2"])
+      // );
+    }
+  });
+
   //   const { user } = useContext(AuthContext);
   //   if (user?.username === "admin") return <ErrorPage />;
 
@@ -44,19 +51,6 @@ export default function Home() {
   //   );
   // storeData("animals",animals2);
   return (
-    // <View className="flex-1 items-center justify-center bg-red-500">
-    //   <Text>Home</Text>
-    //   <View>
-    //     {animals2.map((animal: any) => {
-    //       return (
-    //         <View key={animal.name} className="">
-    //           <Text>{animal.name}</Text>
-    //           {/* <SmallCard name={animal.name} image={animal.image} /> */}
-    //         </View>
-    //       );
-    //     })}
-    //   </View>
-    // </View>
     <SafeAreaView className=" bg-darkGreen">
       <Navbar />
       <ScrollView className="bg-lightGreen flex flex-col pt-5  space-y-4 w-full ">
