@@ -3,7 +3,6 @@
 import { View, Text, Image } from "react-native";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { UserIcon } from "react-native-heroicons/outline";
 function BigCard({
   title,
   description,
@@ -90,7 +89,7 @@ function BigCard({
             </svg>
           </View>
           {/* )} */}
-          {/* {user && ( onClick={() => like()}*/}
+          {/* {user && ( onPress={() => like()}*/}
 
           <View className="self-end ">
             <Text>

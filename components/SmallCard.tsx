@@ -9,7 +9,7 @@ function SmallCard({ animal }: { animal: animalInfo }) {
   const img: string = "../assets" + animal.image + "";
   return (
     <TouchableOpacity
-      // onClick={() => navigate(`/animal/${name}`)}
+      // onPress={() => navigate(`/animal/${name}`)}
       onPress={() => {
         navigation.navigate("Animal", { animal: JSON.stringify(animal) });
       }}

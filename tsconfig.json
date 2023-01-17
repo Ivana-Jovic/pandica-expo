@@ -1,4 +1,5 @@
 {
-  "compilerOptions": {},
+  "compilerOptions": { "module": "esnext", },//dodala zbog debugara za async storage
+  // https://bobbyhadz.com/blog/typescript-dynamic-imports-only-supported-when-module
   "extends": "expo/tsconfig.base"
 }

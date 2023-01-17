@@ -96,7 +96,7 @@ function Animal() {
           </View>
           {/* {user && user.username !== "admin" && !wantToComm && (
           <button
-            onClick={() => setWantToComm(!wantToComm)}
+            onPress={() => setWantToComm(!wantToComm)}
             className="mt-5 btn border-none w-48 bg-white hover:bg-white  shadow-md hover:shadow-lg text-black   rounded-md "
           >
             Ostavi komentar
@@ -114,13 +114,13 @@ function Animal() {
             </View>
             <View className="flex gap-10 justify-center">
               <button
-                onClick={postComment}
+                onPress={postComment}
                 className="mt-5 btn border-none w-48 bg-white hover:bg-white  shadow-md hover:shadow-lg text-black   rounded-md "
               >
                 Postavi
               </button>
               <button
-                onClick={cancelComment}
+                onPress={cancelComment}
                 className="mt-5 btn border-none w-48 bg-white hover:bg-white  shadow-md hover:shadow-lg text-black   rounded-md "
               >
                 Ponisti

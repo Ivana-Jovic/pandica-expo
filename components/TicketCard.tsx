@@ -16,17 +16,16 @@ function TicketCard({
 }) {
   return (
     <View className="flex flex-col items-center bg-offwhite shadow-md mb-10">
-      {/* //MIKI yasto ovde mora relative inace ne radi dugme */}
       <View className="mt-5 flex flex-col items-center ">
         <Text className="font-semibold text-xl">{title}</Text>
         <Text className="mt-5">{description}</Text>
       </View>
       <TouchableOpacity
-        onClick={() => {
+        onPress={() => {
           setSelectedItemTitle(title);
           setSelectedItemPrice(price);
         }}
-        className="p-3 w-full mt-5 border-none  bg-darkGreen 
+        className="p-3 w-full mt-5  bg-darkGreen 
         rounded-sm rounded-t-none flex  items-center"
       >
         <Text className="text-black "> Ubaci u korpu &nbsp;</Text>

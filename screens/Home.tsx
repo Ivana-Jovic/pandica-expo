@@ -7,23 +7,23 @@ import BigCard from "../components/BigCard";
 import Navbar from "../components/Navbar";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const storeData = async (key, value) => {
-  try {
-    const jsonValue = JSON.stringify(value);
-    await AsyncStorage.setItem(key, jsonValue);
-  } catch (e) {
-    // saving error
-  }
-};
+// const storeData = async (key, value) => {
+//   try {
+//     const jsonValue = JSON.stringify(value);
+//     await AsyncStorage.setItem(key, jsonValue);
+//   } catch (e) {
+//     // saving error
+//   }
+// };
 
-const getData = async () => {
-  try {
-    const jsonValue = await AsyncStorage.getItem("@storage_Key");
-    return jsonValue != null ? JSON.parse(jsonValue) : null;
-  } catch (e) {
-    // error reading value
-  }
-};
+// const getData = async () => {
+//   try {
+//     const jsonValue = await AsyncStorage.getItem("@storage_Key");
+//     return jsonValue != null ? JSON.parse(jsonValue) : null;
+//   } catch (e) {
+//     // error reading value
+//   }
+// };
 
 export default function Home() {
   //   const [newPage, setNewPage] = useState<number>(1);

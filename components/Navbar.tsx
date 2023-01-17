@@ -7,6 +7,9 @@ import {
   DrawerItemList,
   DrawerItem,
 } from "@react-navigation/drawer";
+// import { SparklesIcon as SparklesIconOutline } from "react-native-heroicons/outline";
+// import shcart from assets
+import Burger from "../assets/icons/burger.svg";
 function Navbar() {
   const navigation = useNavigation();
   return (
@@ -23,7 +26,7 @@ function Navbar() {
         />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.toggleDrawer()} className="">
-        <Text>III</Text>
+        <Burger />
       </TouchableOpacity>
     </View>
   );
