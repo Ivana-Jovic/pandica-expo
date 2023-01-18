@@ -10,6 +10,7 @@ import Register from "../components/Register";
 import { TouchableOpacity } from "react-native";
 import { TextInput } from "react-native";
 import { useNavigation } from "@react-navigation/core";
+import { Toast } from "react-native-toast-message/lib/src/Toast";
 
 export default function Login() {
   const [username, setUsername] = useState<string>("");
@@ -62,9 +63,29 @@ export default function Login() {
                     // setPopupOpen(false);
                     setUsername("");
                     setPassword("");
-                    navigation.navigate("Home");
+                    navigation.navigate("Pocetna");
+                    console.log("SIGN IN");
+                  } else {
+                    console.log("NOT SIGN IN");
+                    Toast.show({
+                      type: "error",
+                      text1: "PRIJAVA NIJE USPELA",
+                    });
                   }
                 });
+
+                // if (signin(username, password)) {
+                //   setUsername("");
+                //   setPassword("");
+                //   navigation.navigate("Pocetna");
+                //   console.log("SIGN IN");
+                // } else {
+                //   console.log("NOT SIGN IN");
+                //   Toast.show({
+                //     type: "error",
+                //     text1: "PRIJAVA NIJE USPELA",
+                //   });
+                // }
               }}
               className="p-3 w-48 bg-offwhite shadow-m rounded-md"
             >

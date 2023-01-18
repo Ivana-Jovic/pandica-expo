@@ -27,9 +27,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<undefined | userInfo>(undefined);
 
   const signout = () => {
-    // localStorage.removeItem("currUser");
     removeValue("currUser");
     setUser(undefined);
+    Toast.show({
+      type: "success",
+      text1: "Odjavljen",
+    });
   };
 
   const signin = async (username: string, password: string) => {
@@ -37,12 +40,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     // const userString = getData("users");
     // const users: userInfo[] =
     //   typeof userString === "string" ? JSON.parse(userString) : {};
-    const userString = getData("users");
-    const users: userInfo[] = JSON.parse(await userString);
+
+    const userString = await getData("users");
+    const users: userInfo[] = JSON.parse(userString);
     const currUser = users.find((user) => {
       return user.username === username && user.password === password;
     });
-
     if (currUser) {
       Toast.show({
         type: "success",
@@ -50,8 +53,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       });
       console.log(currUser);
       // localStorage.setItem("currUser", JSON.stringify(currUser));
-      storeData("currUser", JSON.stringify(currUser));
+      await storeData("currUser", JSON.stringify(currUser));
+      console.log("|||||");
       setUser(currUser);
+
       return true;
     } else {
       Toast.show({
@@ -63,11 +68,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
   useEffect(() => {
     // const userString = localStorage.getItem("currUser");
-    const userString = getData("currUser");
-    if (typeof userString === "string") setUser(JSON.parse(userString));
-
-    // storeData("aaaaa", JSON.stringify("AAAaBBB"));
-    // storeData("aaaaan", JSON.stringify("AAAa"));
+    getData("currUser").then((userString) => {
+      if (typeof userString === "string") setUser(JSON.parse(userString));
+      console.log("Useeff context");
+    });
+    // if (typeof userString === "string") setUser(JSON.parse(userString));
   }, []);
 
   const u: ContextType = {

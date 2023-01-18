@@ -3,15 +3,17 @@
 // import { useContext } from "react";
 // import { AuthContext } from "authContext";
 // import ErrorPage from "./ErrorPage";
+import { useContext } from "react";
 import { View, Text, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { AuthContext } from "../authContext";
 import Navbar from "../components/Navbar";
 import Register from "../components/Register";
+import ErrorPage from "./ErrorPage";
 
 function Profile() {
-  // const { user } = useContext(AuthContext);
-  // if (!user || user?.username === "admin") return <ErrorPage />;
-
+  const { user } = useContext(AuthContext);
+  if (!user) return <ErrorPage />;
   return (
     <SafeAreaView className=" bg-darkGreen grow">
       <Navbar />
@@ -21,7 +23,7 @@ function Profile() {
           items-center
           "
         >
-          <Text className="my-10 text-2xl font-semibold">Profile</Text>
+          <Text className="mt-10 text-2xl font-semibold">Profile</Text>
           <Register inPopup={false} />
         </View>
       </ScrollView>

@@ -16,7 +16,7 @@ function Navbar() {
     <View className="bg-darkGreen flex flex-row items-center px-4 pb-3 justify-between">
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("Home");
+          navigation.navigate("Pocetna");
         }}
         className="pt-2"
       >

@@ -1,10 +1,11 @@
-import { useRoute } from "@react-navigation/core";
+import { useNavigation, useRoute } from "@react-navigation/core";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { View, Text, ScrollView, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Navbar from "../components/Navbar";
 import { animalInfo } from "../data";
+import ErrorPage from "./ErrorPage";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
 // import bgImage from "images/panda.jpg";
 // import { useParams } from "react-router-dom";
@@ -15,6 +16,7 @@ function Animal() {
   const {
     params: { animal },
   } = useRoute();
+
   const currAnimal: animalInfo = JSON.parse(animal);
   // const { user } = useContext(AuthContext);
   // const [wantToComm, setWantToComm] = useState<boolean>(false);

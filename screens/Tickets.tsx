@@ -106,22 +106,27 @@ function Tickets() {
               <Text>{selectedItemPrice * count} rsd</Text>
             </View>
             <View className="border"></View>
-            <View className="py-3 flex flex-row gap-7 justify-center">
+            <View className="py-3 flex flex-row space-x-7 justify-center">
               <TouchableOpacity
                 onPress={buy}
-                className="btn border-none w-28 bg-offwhite hover:bg-offwhite shadow-md hover:shadow-lg text-black   rounded-md "
+                className="p-3  w-32 bg-white shadow-md rounded-md"
               >
-                <Text>Kupi</Text>
+                <Text className="text-center uppercase font-semibold">
+                  Kupi
+                </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={cancel}
-                className="btn border-none w-28 bg-offwhite hover:bg-offwhite  shadow-md hover:shadow-lg text-black   rounded-md "
+                className="p-3  w-32 bg-white shadow-md rounded-md"
               >
-                <Text>Odustani</Text>
+                <Text className="text-center uppercase font-semibold">
+                  Odustani
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
         )}
+
         <View className="mt-10 flex ">
           <TicketCard
             title="Pojedinačna ulaznica"

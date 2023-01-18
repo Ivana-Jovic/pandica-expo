@@ -260,13 +260,13 @@ function Register({
           </View>
         )}
       </View>
-      <View className="flex flex-row  justify-center mt-5">
+      <View className="mx-5 flex flex-row space-x-5 justify-center mt-5">
         <TouchableOpacity
           // title="Submit"
           onPress={handleSubmit(onSubmit)}
-          className="mt-5 p-3 w-48 bg-offwhite shadow-m rounded-md"
+          className="w-32 p-3 bg-white shadow-m rounded-md"
         >
-          <Text className="text-center uppercase font-semibold">
+          <Text className=" text-center uppercase font-semibold">
             {inPopup ? "Registruj se" : "Promeni"}
           </Text>
         </TouchableOpacity>
@@ -274,7 +274,7 @@ function Register({
         {!inPopup && (
           <TouchableOpacity
             onPress={cancel}
-            className="my-5 p-3  w-48 bg-offwhite shadow-md rounded-md"
+            className="p-3  w-32 bg-white shadow-md rounded-md"
           >
             <Text className="text-center uppercase font-semibold">
               Odustani
