@@ -21,7 +21,7 @@ function Contact() {
             <Text className="font-semibold">Textandica@gmail.com</Text>
           </View>
           <Image
-            source={require("../assets" + "/images/map.jpg" + "")}
+            source={require("../assets/images/map.jpg")}
             alt=""
             className=" h-52 border border-gray-300"
           />

@@ -19,7 +19,7 @@ function TicketCardPicture({
     <View className=" flex flex-col items-center bg-offwhite shadow-md mb-20">
       <View className="w-full ">
         <Image
-          source={require("../assets" + "/images/panda.jpg" + "")}
+          source={require("../assets/images/panda.jpg")}
           alt=""
           className="absolute opacity-10 object-cover h-40"
         />

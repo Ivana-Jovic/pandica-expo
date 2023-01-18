@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/core";
 import { useContext } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { TouchableOpacity } from "react-native";
@@ -49,24 +50,24 @@ function Register({
       newPassword: "",
     },
   });
-
+  const navigation = useNavigation();
   const onSubmit: SubmitHandler<IFormInput> = async (data: IFormInput) => {
-    // if (!inPopup && data.oldPassword !== "") {
-    //   if (data.newPassword === "") {
-    //     Toast.show({
-    //       type: "error",
-    //       text1: "Nova lozinka ne sme biti prazna",
-    //     });
-    //     return;
-    //   }
-    //   if (data.oldPassword !== user?.password) {
-    //     Toast.show({
-    //       type: "error",
-    //       text1: "Ne poklapa se lozinka",
-    //     });
-    //     return;
-    //   }
-    // }
+    if (!inPopup && data.oldPassword !== "") {
+      if (data.newPassword === "") {
+        Toast.show({
+          type: "error",
+          text1: "Nova lozinka ne sme biti prazna",
+        });
+        return;
+      }
+      if (data.oldPassword !== user?.password) {
+        Toast.show({
+          type: "error",
+          text1: "Ne poklapa se lozinka",
+        });
+        return;
+      }
+    }
     const userString = getData("users");
     const users: userInfo[] = JSON.parse(await userString);
     console.log(users);
@@ -80,21 +81,29 @@ function Register({
         data.oldPassword === "" ? user?.password + "" : data.newPassword,
       notifications: !inPopup && user?.notifications ? user?.notifications : [],
     };
-    // if (!inPopup) {
-    //   // toast.success("Promenjeni podaci");
-    //   Toast.show({
-    //     type: "success",
-    //     text1: "Promenjeni podaci",
-    //   });
-    //   const u = users.find((uu) => {
-    //     return uu.username === user?.username;
-    //   });
-    //   const index = u ? users.indexOf(u) : -2; //iz nekog rayloga ne moze user iy konteksta
-    //   users[index] = newUser;
-    //   localStorage.setItem("currUser", JSON.stringify(newUser));
-    //   setUser(newUser);
-    //   // navigate("/");
-    // }
+    if (!inPopup) {
+      Toast.show({
+        type: "success",
+        text1: "Promenjeni podaci",
+      });
+      const u = users.find((uu) => {
+        return uu.username === user?.username;
+      });
+      const index = u ? users.indexOf(u) : -2; //iz nekog rayloga ne moze user iy konteksta
+      users[index] = newUser;
+      storeData("currUser", JSON.stringify(newUser));
+      setUser(newUser);
+      reset({
+        firstName: "",
+        lastName: "",
+        telephone: "",
+        adress: "",
+        username: "",
+        oldPassword: "",
+        newPassword: "",
+      });
+      navigation.navigate("Pocetna");
+    }
     if (inPopup) {
       const u = users.find((uu) => {
         return uu.username === data.username;
@@ -128,11 +137,20 @@ function Register({
   };
 
   const cancel = () => {
-    // navigate("/");
     Toast.show({
       type: "error",
       text1: "Odustano od promene podtaka",
     });
+    reset({
+      firstName: "",
+      lastName: "",
+      telephone: "",
+      adress: "",
+      username: "",
+      oldPassword: "",
+      newPassword: "",
+    });
+    navigation.navigate("Pocetna");
   };
   return (
     <View className="flex flex-col mt-10">
@@ -206,23 +224,25 @@ function Register({
             name="adress"
           />
         </View>
-        <View className="flex flex-row items-center">
-          <Text className="w-32">Korisnicko ime</Text>
-          <Controller
-            control={control}
-            rules={{
-              required: inPopup ? true : false,
-            }}
-            render={({ field: { onChange, value } }) => (
-              <TextInput
-                className="bg-white w-32"
-                onChangeText={onChange}
-                value={value}
-              />
-            )}
-            name="username"
-          />
-        </View>
+        {inPopup && (
+          <View className="flex flex-row items-center">
+            <Text className="w-32">Korisnicko ime</Text>
+            <Controller
+              control={control}
+              rules={{
+                required: inPopup ? true : false,
+              }}
+              render={({ field: { onChange, value } }) => (
+                <TextInput
+                  className="bg-white w-32"
+                  onChangeText={onChange}
+                  value={value}
+                />
+              )}
+              name="username"
+            />
+          </View>
+        )}
         <View className="flex flex-row items-center">
           <Text className="w-32">{inPopup ? "Lozinka" : "Stara lozinka"}</Text>
           <Controller
@@ -260,7 +280,7 @@ function Register({
           </View>
         )}
       </View>
-      <View className="mx-5 flex flex-row space-x-5 justify-center mt-5">
+      <View className="mx-5 flex flex-row space-x-5 justify-center mt-10">
         <TouchableOpacity
           // title="Submit"
           onPress={handleSubmit(onSubmit)}

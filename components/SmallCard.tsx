@@ -11,17 +11,17 @@ function SmallCard({ animal }: { animal: animalInfo }) {
     <TouchableOpacity
       // onPress={() => navigate(`/animal/${name}`)}
       onPress={() => {
-        navigation.navigate("Animal", { animal: JSON.stringify(animal) });
+        // navigation.navigate("Animal", { animal: JSON.stringify(animal) });
+        navigation.navigate("Animal", {
+          animalName: JSON.stringify(animal.name),
+        });
       }}
       className=" cursor-pointer  w-36 bg-white shadow-xl rounded-sm"
     >
-      <Image
-        source={require("../assets" + "/images/sumskiris.jpg" + "")}
-        alt=""
-        className="h-20 w-36 object-cover"
-      />
+      <Image source={animal.image} alt="" className="h-20 w-36 object-cover" />
       <View className="w-full ">
         <Text className="w-full text-center">{animal.name}</Text>
+        <Text className="w-full text-center">{animal.comments.length}</Text>
       </View>
     </TouchableOpacity>
   );

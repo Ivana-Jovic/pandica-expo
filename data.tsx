@@ -18,37 +18,37 @@ const des: string =
 export const animals2: animalInfo[] = [
   {
     name: "Sumski ris",
-    image: "/images/sumskiris.jpg",
+    image: require("./assets/images/sumskiris.jpg"),
     description: des,
     comments: ["Ivana:Ovo je komentar 1", "Ana:Ovo je komentar 2"],
   },
   {
     name: "Merkat",
-    image: "/images/merkat.jpg",
+    image: require("./assets/images/merkat.jpg"),
     description: des,
     comments: ["Ivana:Ovo je komentar 1", "Ana:Ovo je komentar 2"],
   },
   {
     name: "Koala",
-    image: "/images/koala.jpg",
+    image: require("./assets/images/koala.jpg"),
     description: des,
     comments: ["Ivana:Ovo je komentar 1", "Ana:Ovo je komentar 2"],
   },
   {
     name: "Zebra",
-    image: "/images/zebra.jpg",
+    image: require("./assets/images/zebra.jpg"),
     description: des,
     comments: ["Ivana:Ovo je komentar 1", "Ana:Ovo je komentar 2"],
   },
   {
     name: "Azijski lav",
-    image: "/images/azijskilav.jpg",
+    image: require("./assets/images/azijskilav.jpg"),
     description: des,
     comments: ["Ivana:Ovo je komentar 1", "Ana:Ovo je komentar 2"],
   },
   {
     name: "Azijski slon",
-    image: "/images/azijskislon.jpg",
+    image: require("./assets/images/azijskislon.jpg"),
     description: des,
     comments: ["Ivana:Ovo je komentar 1", "Ana:Ovo je komentar 2"],
   },
@@ -90,7 +90,7 @@ export const events: eventInfo[] = [
     description:
       "Noću u prašumi: Nije strašno, ali u sanjivoj atmosferij i uz odličnu hranu - to je 'Masoala noću', nova ponuda za nezaboravno veče u zoološkom vrtu.",
     likes: 1,
-    image: "/images/events/masoala.jpg",
+    image: require("./assets/images/events/masoala.jpg"),
     whoLiked: ["ivana"],
   },
   {
@@ -98,7 +98,7 @@ export const events: eventInfo[] = [
     description:
       "Uz pomoć profesionalaca i volontera saznaj zanimljivosti o ovim životinjama, dok ih hraniš. Celokupna zarada od ulaznica za hranjenje biće donirana projektu za žirafe u Keniji.",
     likes: 1,
-    image: "/images/events/giraffenfuetterung.jpg",
+    image: require("./assets/images/events/giraffenfuetterung.jpg"),
     whoLiked: ["a"],
   },
   {
@@ -106,7 +106,7 @@ export const events: eventInfo[] = [
     description:
       "Ukoliko temperatura padne ispod 10stepeni zimi, u periodu od novembra do februara moguće je videti paradu pingvina svako jutro. Jedinstveno iskustvo koje se ne propušta!",
     likes: 0,
-    image: "/images/events/pinguinParada.jpg",
+    image: require("./assets/images/events/pinguinParada.jpg"),
     whoLiked: [],
   },
   {
@@ -114,7 +114,7 @@ export const events: eventInfo[] = [
     description:
       "Ovaj dogadjaj je idealan za decu školskog urasta. Deca se takmiče ko može da uoči više različitih vrsta riba, a pobednik dobija besplatnu ulaznicu za sledeću posetu.",
     likes: 0,
-    image: "/images/events/aquarium.jpg",
+    image: require("./assets/images/events/aquarium.jpg"),
     whoLiked: [],
   },
   {
@@ -122,7 +122,7 @@ export const events: eventInfo[] = [
     description:
       "Svake nedelje, ponedeljkom, ne propustite da vidite božanstveno kupanje slonova. Ovaj dogadjaj je pogodan za odrasle i decu svih uzrasta.",
     likes: 0,
-    image: "/images/events/elephantsswimming.jpg",
+    image: require("./assets/images/events/elephantsswimming.jpg"),
     whoLiked: [],
   },
   {
@@ -130,7 +130,7 @@ export const events: eventInfo[] = [
     description:
       "Hranjenje se odvija svaki drugi vikend u 2 časa. Pored hranjenja, moći ćete da čujete priču o ovim  neverovatnim životinjama. Nemojte propustiti ovaj doživljaj.",
     likes: 0,
-    image: "/images/events/batfeeding.jpg",
+    image: require("./assets/images/events/batfeeding.jpg"),
     whoLiked: [],
   },
 ];

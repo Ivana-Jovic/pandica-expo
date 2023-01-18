@@ -1,32 +1,17 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
-import { animals2, events, users } from "../data";
+import { animalInfo, animals2, events, users } from "../data";
 import SmallCard from "../components/SmallCard";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BigCard from "../components/BigCard";
 import Navbar from "../components/Navbar";
 import { getData, storeData } from "../helperFunctions";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
-
-// const storeData = async (key, value) => {
-//   try {
-//     const jsonValue = JSON.stringify(value);
-//     await AsyncStorage.setItem(key, jsonValue);
-//   } catch (e) {
-//     // saving error
-//   }
-// };
-
-// const getData = async () => {
-//   try {
-//     const jsonValue = await AsyncStorage.getItem("@storage_Key");
-//     return jsonValue != null ? JSON.parse(jsonValue) : null;
-//   } catch (e) {
-//     // error reading value
-//   }
-// };
+import { createContext, Dispatch, useEffect, useState } from "react";
 
 export default function Home() {
+  const [animals, setAnimals] = useState<animalInfo[]>(animals2);
+
   getData("users").then((item) => {
     if (item) {
       // do the damage
@@ -45,11 +30,18 @@ export default function Home() {
 
   //   const { user } = useContext(AuthContext);
   //   if (user?.username === "admin") return <ErrorPage />;
+  // const animalString = await getData("animals");
+  // const animals: animalInfo[] = JSON.parse(animalString);
 
-  //   const animals: animalInfo[] = JSON.parse(
-  //     localStorage.getItem("animals") + ""
-  //   );
   // storeData("animals",animals2);
+  // useEffect(() => {
+  //   getData("animals").then((animalString) => {
+  //     setAnimals(JSON.parse(animalString));
+  //   });
+  // }, []);
+  // getData("animals").then((animalString) => {
+  //   setAnimals(JSON.parse(animalString));
+  // });
   return (
     <SafeAreaView className=" bg-darkGreen">
       <Navbar />
@@ -59,7 +51,7 @@ export default function Home() {
           justify-center gap-7
           "
         >
-          {animals2.map((animal: any) => {
+          {animals.map((animal: any) => {
             return (
               <View key={animal.name} className="">
                 <SmallCard animal={animal} />

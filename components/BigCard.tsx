@@ -60,7 +60,7 @@ function BigCard({
     <View>
       <View className="card  p-6 bg-offwhite shadow-xl rounded-sm ">
         <Image
-          source={require("../assets" + "/images/sumskiris.jpg" + "")}
+          source={image}
           alt=""
           className="h-28 w-full object-cover"
           // src={image}

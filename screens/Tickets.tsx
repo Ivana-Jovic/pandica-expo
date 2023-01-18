@@ -13,8 +13,9 @@ import TicketCardPicture from "../components/TicketCardPicture";
 import Minus from "../assets/icons/minus.svg";
 import Plus from "../assets/icons/plus.svg";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
+import { AuthContext } from "../authContext";
 function Tickets() {
-  // const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [count, seCount] = useState<number>(1);
   const [selectedItemTitle, setSelectedItemTitle] = useState<string>("");
   const [selectedItemPrice, setSelectedItemPrice] = useState<number>(0);
@@ -59,13 +60,13 @@ function Tickets() {
       <Navbar />
 
       <ScrollView className="px-10 bg-lightGreen flex flex-col grow  ">
-        {/* {!user && selectedItemTitle && (
-        <View className="my-10 text-2xl font-semibold">
-          Za kupovinu ulaznica morate se prijaviti.
-        </View>
-      )} */}
+        {!user && selectedItemTitle && (
+          <Text className="my-10 text-center  text-2xl font-semibold">
+            Za kupovinu ulaznica morate se prijaviti.
+          </Text>
+        )}
         {/* {user && selectedItemTitle && ( */}
-        {selectedItemTitle && (
+        {user && selectedItemTitle && (
           <View className="flex flex-col mb-10  mt-10">
             <View className="py-3 flex flex-row justify-between px-5">
               <Text>{selectedItemTitle}</Text>
