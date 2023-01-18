@@ -1,9 +1,7 @@
 import { Text, View } from "react-native";
-import React, { Component } from "react";
 import Navbar from "../components/Navbar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView } from "react-native-gesture-handler";
-
 import { useContext, useState } from "react";
 import { AuthContext } from "../authContext";
 import Register from "../components/Register";
@@ -17,7 +15,7 @@ export default function Login() {
   const [password, setPassword] = useState<string>("");
   const [issignin, setssignin] = useState<boolean>(true);
 
-  const { user, signin, signout } = useContext(AuthContext);
+  const { signin } = useContext(AuthContext);
   const navigation = useNavigation();
   const handleClose = () => {
     // setPopupOpen(false);

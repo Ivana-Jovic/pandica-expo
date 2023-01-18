@@ -1,8 +1,3 @@
-// import bgImage from "images/panda.jpg";
-// import Register from "components/Register";
-// import { useContext } from "react";
-// import { AuthContext } from "authContext";
-// import ErrorPage from "./ErrorPage";
 import { useContext } from "react";
 import { View, Text, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";

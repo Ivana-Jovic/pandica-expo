@@ -1,19 +1,15 @@
 import { useContext, useState } from "react";
-// import toast from "react-hot-toast";
-// import bgImage from "images/panda.jpg";
-// import { AuthContext } from "authContext";
-// import ErrorPage from "./ErrorPage";
-import { useNavigation } from "@react-navigation/core";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import TicketCard from "../components/TicketCard";
 import Navbar from "../components/Navbar";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView, TextInput } from "react-native-gesture-handler";
 import TicketCardPicture from "../components/TicketCardPicture";
 import Minus from "../assets/icons/minus.svg";
 import Plus from "../assets/icons/plus.svg";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
 import { AuthContext } from "../authContext";
+
 function Tickets() {
   const { user } = useContext(AuthContext);
   const [count, seCount] = useState<number>(1);
@@ -26,22 +22,18 @@ function Tickets() {
   //     setSelectedItemPrice(selectedItemPrice * 0.9);
   //   }
   // };
-
+  const handleChange = (t: string) => {
+    setPromo(t);
+    if (t === "promo") {
+      setSelectedItemPrice(selectedItemPrice * 0.9);
+    }
+  };
   const buy = () => {
     Toast.show({
       type: "success",
       text1: "Kupljena ulaznica",
       // text2: "This is some something 👋",
     });
-    // const notificationsAdmin: string[] = JSON.parse(
-    //   localStorage.getItem("notificationAdmin") + ""
-    // );
-    // notificationsAdmin.push(user?.username + ": ceka odobravanje");
-    // localStorage.setItem(
-    //   "notificationAdmin",
-    //   JSON.stringify(notificationsAdmin)
-    // );
-
     setSelectedItemPrice(0);
     setSelectedItemTitle("");
   };
@@ -65,7 +57,6 @@ function Tickets() {
             Za kupovinu ulaznica morate se prijaviti.
           </Text>
         )}
-        {/* {user && selectedItemTitle && ( */}
         {user && selectedItemTitle && (
           <View className="flex flex-col mb-10  mt-10">
             <View className="py-3 flex flex-row justify-between px-5">
@@ -93,12 +84,11 @@ function Tickets() {
             <View className="py-3 flex flex-row justify-between px-5">
               <Text>Promo kod</Text>
               <View>
-                {/* <input
+                <TextInput
+                  className="bg-white w-32"
+                  onChangeText={(text) => handleChange(text)}
                   value={promo}
-                  onChange={handleChange}
-                  type="text"
-                  className="outline-none w-36"
-                /> */}
+                />
               </View>
             </View>
             <View className="border"></View>

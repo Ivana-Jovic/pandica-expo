@@ -1,14 +1,6 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
-import React, { Component } from "react";
 import { useNavigation } from "@react-navigation/core";
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from "@react-navigation/drawer";
-// import { SparklesIcon as SparklesIconOutline } from "react-native-heroicons/outline";
-// import shcart from assets
+
 import Burger from "../assets/icons/burger.svg";
 function Navbar() {
   const navigation = useNavigation();

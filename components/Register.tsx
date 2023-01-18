@@ -2,13 +2,8 @@ import { useNavigation } from "@react-navigation/core";
 import { useContext } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { TouchableOpacity } from "react-native";
-import { Button } from "react-native";
 import { TextInput } from "react-native";
-// import { useNavigate } from "react-router-dom";
-// import { userInfo } from "data";
-// import { useContext } from "react";
-// import { AuthContext } from "authContext";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text } from "react-native";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
 import { AuthContext } from "../authContext";
 import { userInfo } from "../data";
@@ -25,17 +20,15 @@ type IFormInput = {
 
 function Register({
   inPopup,
-  action,
-}: {
+}: // action,
+{
   inPopup: boolean;
   action?: () => void;
 }) {
   const { user, setUser } = useContext(AuthContext);
-  // const navigate = useNavigate();
-
   const {
     handleSubmit,
-    register,
+    // register,
     reset,
     control,
     formState: { errors },
@@ -154,7 +147,6 @@ function Register({
   };
   return (
     <View className="flex flex-col mt-10">
-      {/* <form onSubmit={handleSubmit(onSubmit)}> */}
       <View className="flex items-center space-y-4 ">
         <View className="flex flex-row items-center">
           <Text className="w-32">Ime</Text>
@@ -282,7 +274,6 @@ function Register({
       </View>
       <View className="mx-5 flex flex-row space-x-5 justify-center mt-10">
         <TouchableOpacity
-          // title="Submit"
           onPress={handleSubmit(onSubmit)}
           className="w-32 p-3 bg-white shadow-m rounded-md"
         >
@@ -302,7 +293,6 @@ function Register({
           </TouchableOpacity>
         )}
       </View>
-      {/* </form> */}
       <View>
         <View>
           <Text className="text-center  my-5">

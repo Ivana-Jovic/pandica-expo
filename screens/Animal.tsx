@@ -5,13 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { AuthContext } from "../authContext";
 import Navbar from "../components/Navbar";
 import { animalInfo } from "../data";
-import ErrorPage from "./ErrorPage";
-// import AsyncStorage from "@react-native-async-storage/async-storage";
-// import bgImage from "images/panda.jpg";
-// import { useParams } from "react-router-dom";
-// import { animalInfo } from "data";
-// import { AuthContext } from "authContext";
-import { getData, removeValue, storeData } from "../helperFunctions";
+import { getData, storeData } from "../helperFunctions";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 
@@ -87,18 +81,11 @@ function Animal() {
           </Text>
 
           <View className="flex-col flex items-center  ">
-            {/* <View className=""> */}
-            {/* <img
-            src={currAnimal?.image}
-            alt=""
-            className="max-w-[400px] border border-gray-300"
-          /> */}
             <Image
               source={currAnimal?.image}
               alt=""
               className="h-36 w-full object-cover border border-gray-300 my-5"
             />
-            {/* </View> */}
 
             <Text className=" bg-white p-7 "> {currAnimal?.description} </Text>
           </View>

@@ -1,15 +1,12 @@
-// import { useNavigate } from "react-router-dom";
 import { useNavigation } from "@react-navigation/core";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { animalInfo } from "../data";
-// import myImage from "/images/zebra.jpg";
-// const PlaceholderImage = require("../assets/images/zebra.jpg");
+
 function SmallCard({ animal }: { animal: animalInfo }) {
   const navigation = useNavigation();
   const img: string = "../assets" + animal.image + "";
   return (
     <TouchableOpacity
-      // onPress={() => navigate(`/animal/${name}`)}
       onPress={() => {
         // navigation.navigate("Animal", { animal: JSON.stringify(animal) });
         navigation.navigate("Animal", {

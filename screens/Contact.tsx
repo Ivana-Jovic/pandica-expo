@@ -1,6 +1,7 @@
 import { View, Text, ScrollView, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Navbar from "../components/Navbar";
+
 function Contact() {
   return (
     <SafeAreaView className=" bg-darkGreen grow">
