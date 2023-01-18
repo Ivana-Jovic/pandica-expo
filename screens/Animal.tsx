@@ -16,14 +16,15 @@ function Animal() {
   } = useRoute();
   const currAnimalName: string = JSON.parse(animalName);
 
-  console.log("----------" + currAnimalName);
-  const [currAnimal, setCurrAnimal] = useState<animalInfo>();
+  // console.log("----------" + currAnimalName);
+
+  const [currAnimal, setCurrAnimal] = useState<animalInfo | undefined>();
   // const currAnimal: animalInfo = JSON.parse(animal);
 
   const { user } = useContext(AuthContext);
   const [wantToComm, setWantToComm] = useState<boolean>(false);
   const [newComment, setNewComment] = useState<string>("");
-  const [refresh, setRefresh] = useState<boolean>(false);
+  // const [refresh, setRefresh] = useState<boolean>(false);
   const navigation = useNavigation();
   const postComment = () => {
     Toast.show({
@@ -31,21 +32,28 @@ function Animal() {
       text1: "Komentar ostavljen",
     });
     getData("animals").then((animalString) => {
-      const a: animalInfo[] = JSON.parse(animalString);
-      for (let i = 0; i < a.length; i++) {
-        if (a[i].name === currAnimal.name) {
-          a[i].comments.push(user?.username + ": " + newComment);
-
-          break;
+      const animals: animalInfo[] = JSON.parse(animalString);
+      // for (let i = 0; i < a.length; i++) {
+      //   if (a[i].name === currAnimal.name) {
+      //     a[i].comments.push(user?.username + ": " + newComment);
+      //     setCurrAnimal(a[i]);
+      //     break;
+      //   }
+      // }
+      animals.forEach((element) => {
+        if (element.name === currAnimal.name) {
+          element.comments.push(user?.username + ": " + newComment);
+          setCurrAnimal(element);
         }
-      }
-      storeData("animals", JSON.stringify(a)).then(() => {
+      });
+      storeData("animals", JSON.stringify(animals)).then(() => {
         setWantToComm(!wantToComm);
         setNewComment("");
         navigation.navigate("Pocetna");
       });
     });
   };
+
   const cancelComment = () => {
     setWantToComm(!wantToComm);
     setNewComment("");
@@ -59,21 +67,23 @@ function Animal() {
   useEffect(() => {
     // console.log("In useEFFANimal 1");
     getData("animals").then((animalString) => {
-      const a: animalInfo[] = JSON.parse(animalString);
+      const animals: animalInfo[] = JSON.parse(animalString);
       // console.log("In useEFFANimal 2");
-      for (let i = 0; i < a.length; i++) {
-        if (a[i].name === currAnimalName) {
-          setCurrAnimal(a[i]);
-          break;
-        }
-      }
+      // for (let i = 0; i < a.length; i++) {
+      //   if (a[i].name === currAnimalName) {
+      //     setCurrAnimal(a[i]);
+
+      //     break;
+      //   }
+      // }
+      setCurrAnimal(animals.find((animal) => animal.name === currAnimalName));
     });
   }, [currAnimalName]);
 
   return (
     <SafeAreaView className=" bg-darkGreen flex flex-col  w-full">
       <Navbar />
-      <Text>HAi{currAnimalName}</Text>
+      {/* <Text>HAi{currAnimalName}</Text> */}
       {currAnimalName && (
         <ScrollView className="p-10 bg-lightGreen ">
           <Text className="text-2xl  text-center font-semibold">
