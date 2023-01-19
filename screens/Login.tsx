@@ -9,25 +9,22 @@ import { TouchableOpacity } from "react-native";
 import { TextInput } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
+import Button from "../components/Button";
 
 export default function Login() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [issignin, setssignin] = useState<boolean>(true);
-
   const { signin } = useContext(AuthContext);
   const navigation = useNavigation();
-  const handleClose = () => {
-    // setPopupOpen(false);
-  };
 
   return (
     <SafeAreaView className=" bg-darkGreen grow">
       <Navbar />
       <ScrollView className=" bg-lightGreen ">
         {!issignin && (
-          <View className="">
-            <Register inPopup={true} action={() => handleClose()} />
+          <View>
+            <Register inPopup={true} />
             <TouchableOpacity
               className="cursor-pointer"
               onPress={() => setssignin(!issignin)}
@@ -54,7 +51,8 @@ export default function Login() {
                 className="bg-white w-32"
               />
             </View>
-            <TouchableOpacity
+
+            <Button
               onPress={() => {
                 signin(username, password).then((res) => {
                   if (res) {
@@ -85,16 +83,9 @@ export default function Login() {
                 //   });
                 // }
               }}
-              className="p-3 w-48 bg-offwhite shadow-m rounded-md"
-            >
-              <Text className="text-center uppercase font-semibold">
-                Prijavi se
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => setssignin(!issignin)}
-              className=" "
-            >
+              text={"Prijavi se"}
+            />
+            <TouchableOpacity onPress={() => setssignin(!issignin)}>
               <Text className="mt-7">Nemate nalog? Registrujte se...</Text>
             </TouchableOpacity>
           </View>

@@ -36,11 +36,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const signin = async (username: string, password: string) => {
-    // const users: userInfo[] = JSON.parse(localStorage.getItem("users") + "");
-    // const userString = getData("users");
-    // const users: userInfo[] =
-    //   typeof userString === "string" ? JSON.parse(userString) : {};
-
     const userString = await getData("users");
     const users: userInfo[] = JSON.parse(userString);
     const currUser = users.find((user) => {
@@ -52,7 +47,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         text1: "Logovan",
       });
       console.log(currUser);
-      // localStorage.setItem("currUser", JSON.stringify(currUser));
       await storeData("currUser", JSON.stringify(currUser));
       console.log("|||||");
       setUser(currUser);
@@ -67,7 +61,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
   useEffect(() => {
-    // const userString = localStorage.getItem("currUser");
     getData("currUser").then((userString) => {
       if (typeof userString === "string") setUser(JSON.parse(userString));
       else {
@@ -75,7 +68,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       }
       console.log("Useeff context");
     });
-    // if (typeof userString === "string") setUser(JSON.parse(userString));
   }, []);
 
   const u: ContextType = {

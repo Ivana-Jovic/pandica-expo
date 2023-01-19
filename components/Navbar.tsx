@@ -1,7 +1,7 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/core";
-
 import Burger from "../assets/icons/burger.svg";
+
 function Navbar() {
   const navigation = useNavigation();
   return (
@@ -18,7 +18,7 @@ function Navbar() {
           className="h-8 w-8 object-cover"
         />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.toggleDrawer()} className="">
+      <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
         <Burger />
       </TouchableOpacity>
     </View>

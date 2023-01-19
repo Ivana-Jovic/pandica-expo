@@ -9,8 +9,6 @@ import { getData, storeData } from "../helperFunctions";
 import { useState } from "react";
 
 export default function Home() {
-  const [animals, setAnimals] = useState<animalInfo[]>(animals2);
-
   getData("users").then((item) => {
     if (item) {
       // do the damage
@@ -20,10 +18,6 @@ export default function Home() {
       storeData("events", JSON.stringify(events));
       storeData("users", JSON.stringify(users));
       storeData("currUser", JSON.stringify([]));
-      // storeData(
-      //   "notificationAdmin",
-      //   JSON.stringify(["a:notAdmin1", "a:notAdmin2"])
-      // );
     }
   });
 
@@ -36,7 +30,7 @@ export default function Home() {
           justify-center gap-7
           "
         >
-          {animals.map((animal: any) => {
+          {animals2.map((animal: any) => {
             return (
               <View key={animal.name} className="">
                 <SmallCard animal={animal} />
@@ -45,10 +39,7 @@ export default function Home() {
           })}
         </View>
 
-        <View
-          className=" flex flex-col content-center gap-7 px-12 mb-32
-          "
-        >
+        <View className="flex flex-col content-center gap-7 px-12 mb-32">
           {events.map((event: any) => {
             return (
               <View key={event.title} className="">

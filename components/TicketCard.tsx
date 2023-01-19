@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import Cart from "../assets/icons/cart.svg";
 
 function TicketCard({
@@ -16,7 +16,7 @@ function TicketCard({
   setSelectedItemPrice: Dispatch<React.SetStateAction<number>>;
 }) {
   return (
-    <View className="flex flex-col items-center bg-offwhite shadow-md mb-10">
+    <View className="flex flex-col items-center bg-offwhite mb-10">
       <View className="mt-5 flex flex-col items-center ">
         <Text className="font-semibold text-xl">{title}</Text>
         <Text className="mt-5">{description}</Text>
@@ -29,7 +29,7 @@ function TicketCard({
         className="p-3 w-full mt-5  bg-darkGreen 
         rounded-sm rounded-t-none flex flex-row  justify-center"
       >
-        <Text className="text-black "> Ubaci u korpu &nbsp;</Text>
+        <Text> Ubaci u korpu &nbsp;</Text>
         <Cart />
       </TouchableOpacity>
     </View>

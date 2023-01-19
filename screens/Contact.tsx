@@ -6,9 +6,8 @@ function Contact() {
   return (
     <SafeAreaView className=" bg-darkGreen grow">
       <Navbar />
-
       <ScrollView className="bg-lightGreen  flex flex-col   px-10">
-        <View className=" flex items-center bg-base-100 rounded-none bg-transTextarent">
+        <View className=" flex items-center">
           <View className="my-16 flex items-center">
             <Text className="font-semibold">Radimo 365 dana u godini: </Text>
             <Text className="font-semibold">mart do oktobar 9–18</Text>
@@ -24,7 +23,7 @@ function Contact() {
           <Image
             source={require("../assets/images/map.jpg")}
             alt=""
-            className=" h-52 border border-gray-300"
+            className="h-52"
           />
         </View>
       </ScrollView>

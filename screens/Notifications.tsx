@@ -11,7 +11,6 @@ function Notifications() {
   return (
     <SafeAreaView className=" bg-darkGreen grow">
       <Navbar />
-
       <ScrollView className=" flex flex-col bg-lightGreen">
         <Text className="my-5 text-2xl font-semibold text-center">
           Moja obaveštenja

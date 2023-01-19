@@ -4,7 +4,6 @@ import { animalInfo } from "../data";
 
 function SmallCard({ animal }: { animal: animalInfo }) {
   const navigation = useNavigation();
-  const img: string = "../assets" + animal.image + "";
   return (
     <TouchableOpacity
       onPress={() => {
@@ -13,13 +12,10 @@ function SmallCard({ animal }: { animal: animalInfo }) {
           animalName: JSON.stringify(animal.name),
         });
       }}
-      className=" cursor-pointer  w-36 bg-white shadow-xl rounded-sm"
+      className="w-36 bg-white  rounded-sm"
     >
       <Image source={animal.image} alt="" className="h-20 w-36 object-cover" />
-      <View className="w-full ">
-        <Text className="w-full text-center">{animal.name}</Text>
-        <Text className="w-full text-center">{animal.comments.length}</Text>
-      </View>
+      <Text className="text-center p-1">{animal.name}</Text>
     </TouchableOpacity>
   );
 }

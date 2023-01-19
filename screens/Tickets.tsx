@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import TicketCard from "../components/TicketCard";
 import Navbar from "../components/Navbar";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -9,6 +9,7 @@ import Minus from "../assets/icons/minus.svg";
 import Plus from "../assets/icons/plus.svg";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
 import { AuthContext } from "../authContext";
+import Button from "../components/Button";
 
 function Tickets() {
   const { user } = useContext(AuthContext);
@@ -16,23 +17,18 @@ function Tickets() {
   const [selectedItemTitle, setSelectedItemTitle] = useState<string>("");
   const [selectedItemPrice, setSelectedItemPrice] = useState<number>(0);
   const [promo, setPromo] = useState<string>("");
-  // const handleChange = (event: any) => {
-  //   setPromo(event.target.value);
-  //   if (event.target.value === "promo") {
-  //     setSelectedItemPrice(selectedItemPrice * 0.9);
-  //   }
-  // };
-  const handleChange = (t: string) => {
-    setPromo(t);
-    if (t === "promo") {
+
+  const handleChange = (text: string) => {
+    setPromo(text);
+    if (text === "promo") {
       setSelectedItemPrice(selectedItemPrice * 0.9);
     }
   };
+
   const buy = () => {
     Toast.show({
       type: "success",
       text1: "Kupljena ulaznica",
-      // text2: "This is some something 👋",
     });
     setSelectedItemPrice(0);
     setSelectedItemTitle("");
@@ -50,7 +46,6 @@ function Tickets() {
   return (
     <SafeAreaView className=" bg-darkGreen grow">
       <Navbar />
-
       <ScrollView className="px-10 bg-lightGreen flex flex-col grow  ">
         {!user && selectedItemTitle && (
           <Text className="my-10 text-center  text-2xl font-semibold">
@@ -98,22 +93,8 @@ function Tickets() {
             </View>
             <View className="border"></View>
             <View className="py-3 flex flex-row space-x-7 justify-center">
-              <TouchableOpacity
-                onPress={buy}
-                className="p-3  w-32 bg-white shadow-md rounded-md"
-              >
-                <Text className="text-center uppercase font-semibold">
-                  Kupi
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={cancel}
-                className="p-3  w-32 bg-white shadow-md rounded-md"
-              >
-                <Text className="text-center uppercase font-semibold">
-                  Odustani
-                </Text>
-              </TouchableOpacity>
+              <Button onPress={buy} text={"Kupi"} />
+              <Button onPress={cancel} text={"Odustani"} />
             </View>
           </View>
         )}
@@ -137,14 +118,14 @@ function Tickets() {
         <View className=" mb-10 flex flex-col ">
           <TicketCardPicture
             title="Promotivni paket 1"
-            description=" Uz kupovinu 2 karte dobijate besplatno piće u kafeu"
+            description="Uz kupovinu 2 karte dobijate besplatno piće u kafeu"
             price={800}
             setSelectedItemTitle={setSelectedItemTitle}
             setSelectedItemPrice={setSelectedItemPrice}
           />
           <TicketCardPicture
             title="Promotivni paket 2"
-            description=" Uz kupovinu 3 karte dobijate suvenir na poklon"
+            description="Uz kupovinu 3 karte dobijate suvenir na poklon"
             price={1200}
             setSelectedItemTitle={setSelectedItemTitle}
             setSelectedItemPrice={setSelectedItemPrice}

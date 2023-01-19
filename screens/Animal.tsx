@@ -7,7 +7,8 @@ import Navbar from "../components/Navbar";
 import { animalInfo } from "../data";
 import { getData, storeData } from "../helperFunctions";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
-import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { TextInput } from "react-native-gesture-handler";
+import Button from "../components/Button";
 
 function Animal() {
   const {
@@ -15,17 +16,12 @@ function Animal() {
     params: { animalName },
   } = useRoute();
   const currAnimalName: string = JSON.parse(animalName);
-
-  // console.log("----------" + currAnimalName);
-
   const [currAnimal, setCurrAnimal] = useState<animalInfo | undefined>();
-  // const currAnimal: animalInfo = JSON.parse(animal);
-
   const { user } = useContext(AuthContext);
   const [wantToComm, setWantToComm] = useState<boolean>(false);
   const [newComment, setNewComment] = useState<string>("");
-  // const [refresh, setRefresh] = useState<boolean>(false);
   const navigation = useNavigation();
+
   const postComment = () => {
     Toast.show({
       type: "success",
@@ -33,13 +29,6 @@ function Animal() {
     });
     getData("animals").then((animalString) => {
       const animals: animalInfo[] = JSON.parse(animalString);
-      // for (let i = 0; i < a.length; i++) {
-      //   if (a[i].name === currAnimal.name) {
-      //     a[i].comments.push(user?.username + ": " + newComment);
-      //     setCurrAnimal(a[i]);
-      //     break;
-      //   }
-      // }
       animals.forEach((element) => {
         if (element.name === currAnimal.name) {
           element.comments.push(user?.username + ": " + newComment);
@@ -62,28 +51,17 @@ function Animal() {
       text1: "Odustano od postavljanja komentara",
     });
   };
-  // const a: animalInfo[] = JSON.parse(localStorage.getItem("animals") + "");
 
   useEffect(() => {
-    // console.log("In useEFFANimal 1");
     getData("animals").then((animalString) => {
       const animals: animalInfo[] = JSON.parse(animalString);
-      // console.log("In useEFFANimal 2");
-      // for (let i = 0; i < a.length; i++) {
-      //   if (a[i].name === currAnimalName) {
-      //     setCurrAnimal(a[i]);
-
-      //     break;
-      //   }
-      // }
       setCurrAnimal(animals.find((animal) => animal.name === currAnimalName));
     });
   }, [currAnimalName]);
 
   return (
-    <SafeAreaView className=" bg-darkGreen flex flex-col  w-full">
+    <SafeAreaView className=" bg-darkGreen">
       <Navbar />
-      {/* <Text>HAi{currAnimalName}</Text> */}
       {currAnimalName && (
         <ScrollView className="p-10 bg-lightGreen ">
           <Text className="text-2xl  text-center font-semibold">
@@ -99,7 +77,7 @@ function Animal() {
 
             <Text className=" bg-white p-7 "> {currAnimal?.description} </Text>
           </View>
-          <View className="w-full mb-28 flex flex-col items-center">
+          <View className="mb-28 flex flex-col items-center">
             <Text className="text-2xl font-semibold  my-10">
               Komentari drugih korisnika
             </Text>
@@ -118,14 +96,10 @@ function Animal() {
               })}
             </View>
             {user && !wantToComm && (
-              <TouchableOpacity
+              <Button
                 onPress={() => setWantToComm(!wantToComm)}
-                className="mb-10 p-3 w-48 bg-offwhite shadow-m rounded-md"
-              >
-                <Text className="text-center uppercase font-semibold">
-                  Ostavi komentar
-                </Text>
-              </TouchableOpacity>
+                text={"Komentarisi"}
+              />
             )}
 
             {wantToComm && (
@@ -139,22 +113,8 @@ function Animal() {
                   />
                 </View>
                 <View className=" my-5 flex flex-row space-x-10">
-                  <TouchableOpacity
-                    onPress={postComment}
-                    className=" p-3 w-32 bg-offwhite shadow-m rounded-md"
-                  >
-                    <Text className="text-center uppercase font-semibold">
-                      Postavi
-                    </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={cancelComment}
-                    className="p-3 w-32 bg-offwhite shadow-m rounded-md"
-                  >
-                    <Text className="text-center uppercase font-semibold">
-                      Ponisti
-                    </Text>
-                  </TouchableOpacity>
+                  <Button onPress={postComment} text={"Postavi"} />
+                  <Button onPress={cancelComment} text={"Ponisti"} />
                 </View>
               </View>
             )}

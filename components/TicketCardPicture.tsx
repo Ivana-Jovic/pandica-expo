@@ -16,7 +16,7 @@ function TicketCardPicture({
   setSelectedItemPrice: Dispatch<React.SetStateAction<number>>;
 }) {
   return (
-    <View className=" flex flex-col items-center bg-offwhite shadow-md mb-20">
+    <View className=" flex flex-col items-center bg-offwhite mb-20">
       <View className="w-full ">
         <Image
           source={require("../assets/images/panda.jpg")}
@@ -36,7 +36,7 @@ function TicketCardPicture({
         className="-mb-10 p-3 w-full mt-5  bg-darkGreen 
           rounded-sm rounded-t-none flex-row   justify-center"
       >
-        <Text className="text-black "> Ubaci u korpu &nbsp;</Text>
+        <Text> Ubaci u korpu &nbsp;</Text>
         <Cart />
       </TouchableOpacity>
     </View>
